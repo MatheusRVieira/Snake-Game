@@ -15,6 +15,8 @@ class Game {
   int GetScore() const;
   int GetSize() const;
 
+  void CheckGameIsPaused(Controller const &controller, bool &running);
+
  private:
   Snake snake;
   SDL_Point food;

@@ -20,6 +20,9 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   bool running = true;
 
   while (running) {
+    
+    CheckGameIsPaused(controller, running);
+    
     frame_start = SDL_GetTicks();
 
     // Input, Update, Render - the main game loop.
@@ -85,3 +88,10 @@ void Game::Update() {
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
+
+void Game::CheckGameIsPaused(Controller const &controller, bool &running)
+{
+    while(snake.pause == true){
+      controller.HandleInput(running, snake);
+    }
+}

@@ -35,6 +35,11 @@ void Controller::HandleInput(bool &running, Snake &snake) const {
           ChangeDirection(snake, Snake::Direction::kRight,
                           Snake::Direction::kLeft);
           break;
+
+        case SDLK_ESCAPE:
+          snake.pause = (snake.pause == false) ? true : false;
+          break;
+          
       }
     }
   }
