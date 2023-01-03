@@ -44,3 +44,9 @@ This work is licensed under a
 [cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
 [cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
+
+
+## Criterias 
+1. The project makes use of references in function declarations. -> void Game::CheckGameIsPaused in game.cpp
+2. The project reads data from a file and process the data, or the program writes data to a file. -> void Game::SaveScore() in game.cpp
+3. The project demonstrates an understanding of C++ functions and control structures. -> Functions above added with if, loops and ternary operator as well.

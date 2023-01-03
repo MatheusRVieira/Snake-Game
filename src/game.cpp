@@ -1,6 +1,12 @@
 #include "game.h"
 #include <iostream>
 #include "SDL.h"
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
@@ -94,4 +100,49 @@ void Game::CheckGameIsPaused(Controller const &controller, bool &running)
     while(snake.pause == true){
       controller.HandleInput(running, snake);
     }
+}
+
+void Game::SaveScore()
+{
+    std::ofstream of;
+    std::fstream f;
+    std::ifstream stream("Record.txt");
+    int PrevRecord = 0;
+    // Getting maximum value if file exist
+    std::string line;
+    int number;
+    std::vector<int> Record;
+    if (stream.is_open()) 
+    {
+        while (getline(stream, line)) 
+        {
+            std::istringstream linestream(line);
+            linestream >> number;
+            Record.push_back(number);
+            
+        }  
+
+        sort(Record.begin(), Record.end(), std::greater<int>());
+        PrevRecord = Record.front();                                // Save previous record to see if the user beat the record. 
+    }
+
+
+   
+    // Saving score in a file
+    of.open("Record.txt", std::ios::app);
+    if (!of)
+        std::cout << "No such file found";
+    else {
+        of << GetScore() << "\n";
+        std::cout << "Score saved!\n";
+        of.close();
+    }
+
+
+    if((GetScore() > PrevRecord) && PrevRecord != 0){
+      std::cout << std::endl << "Congragulations. You beat the record!" << std::endl;
+    }
+    
+
+
 }

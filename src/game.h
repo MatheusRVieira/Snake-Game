@@ -16,6 +16,7 @@ class Game {
   int GetSize() const;
 
   void CheckGameIsPaused(Controller const &controller, bool &running);
+  void SaveScore();
 
  private:
   Snake snake;

@@ -17,6 +17,16 @@ iostream
 -
 SDL.h
 /mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/SDL.h
+fstream
+-
+string
+-
+vector
+-
+sstream
+-
+algorithm
+-
 
 /mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/game.h
 random

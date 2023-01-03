@@ -17,6 +17,7 @@ int main() {
   game.Run(controller, renderer, kMsPerFrame);
   std::cout << "Game has terminated successfully!\n";
   std::cout << "Score: " << game.GetScore() << "\n";
+  if(game.GetScore() > 0 ) game.SaveScore();              // Score only is saved if it's greater than 0
   std::cout << "Size: " << game.GetSize() << "\n";
   return 0;
 }
