@@ -7,6 +7,30 @@
 #include <sstream>
 #include <algorithm>
 
+template <typename T> 
+T GetPreviousScores()
+{
+    T PrevRecord = 0;
+    std::vector<int> PreviousScoreVec;
+    std::ifstream stream(Path::filename);
+    std::string line;
+    int number;
+    if (stream.is_open()) 
+    {
+        while (getline(stream, line)) 
+        {
+            std::istringstream linestream(line);
+            linestream >> number;
+            PreviousScoreVec.push_back(number);
+            
+        }  
+
+        sort(PreviousScoreVec.begin(), PreviousScoreVec.end(), std::greater<int>());
+        PrevRecord = PreviousScoreVec.front();                                // Save previous record to see if the user beat the record. 
+        stream.close();
+    }
+    return PrevRecord;
+}
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
@@ -104,45 +128,17 @@ void Game::CheckGameIsPaused(Controller const &controller, bool &running)
 
 void Game::SaveScore()
 {
-    std::ofstream of;
-    std::fstream f;
-    std::ifstream stream("Record.txt");
-    int PrevRecord = 0;
-    // Getting maximum value if file exist
-    std::string line;
-    int number;
-    std::vector<int> Record;
-    if (stream.is_open()) 
-    {
-        while (getline(stream, line)) 
-        {
-            std::istringstream linestream(line);
-            linestream >> number;
-            Record.push_back(number);
-            
-        }  
-
-        sort(Record.begin(), Record.end(), std::greater<int>());
-        PrevRecord = Record.front();                                // Save previous record to see if the user beat the record. 
+    // Getting previous record and checking if record was beaten
+    if((GetScore() > GetPreviousScores<int>()) && GetPreviousScores<int>() != 0){
+      std::cout << std::endl << "Congragulations. You beat the record!" << std::endl;
     }
 
-
-   
     // Saving score in a file
-    of.open("Record.txt", std::ios::app);
-    if (!of)
-        std::cout << "No such file found";
-    else {
+    std::ofstream of(Path::filename, std::ios::app);
+    if (of.is_open())
+    {
         of << GetScore() << "\n";
         std::cout << "Score saved!\n";
         of.close();
     }
-
-
-    if((GetScore() > PrevRecord) && PrevRecord != 0){
-      std::cout << std::endl << "Congragulations. You beat the record!" << std::endl;
-    }
-    
-
-
 }

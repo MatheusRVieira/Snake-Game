@@ -33,4 +33,8 @@ class Game {
   void Update();
 };
 
+namespace Path {
+  const std::string filename{"Record.txt"};
+};
+
 #endif
