@@ -45,8 +45,19 @@ This work is licensed under a
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
 [cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
 
+## Using WSL 2 on Windows 10
+* Before running `./SnakeGame`:
+  * Run XLaunch. 
+  * Check the box "No access control"
+  * Run: `export DISPLAY=192.168.112.1:0.0` where 192.168.112.1 is the WSL ipv4 address 
+
 
 ## Criterias 
-1. The project makes use of references in function declarations. -> void Game::CheckGameIsPaused in game.cpp
+1. The project makes use of references in function declarations. -> void Game::CheckGameIsPaused and its overloads in game.cpp
 2. The project reads data from a file and process the data, or the program writes data to a file. -> void Game::SaveScore() in game.cpp
 3. The project demonstrates an understanding of C++ functions and control structures. -> Functions above added with if, loops and ternary operator as well.
+4. Templates generalize functions in the project. -> GetPreviousScores
+5. The project uses Object Oriented Programming techniques -> can see it in the function above
+6. Classes use appropriate access specifiers for class members.
+7. Overloaded functions allow the same function to operate on different parameters. -> CheckGameIsPaused is overload twice in game class.
+8. The project accepts user input and processes the input. -> Accept input to pause the game (ESCAPE) and increase speed of the snake (SPACE).

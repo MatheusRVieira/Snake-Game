@@ -51,7 +51,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
   while (running) {
     
-    CheckGameIsPaused(controller, running);
+    CheckGameIsPaused(controller, running); // Pause the game if ESC is pressed
     
     frame_start = SDL_GetTicks();
 
@@ -121,9 +121,31 @@ int Game::GetSize() const { return snake.size; }
 
 void Game::CheckGameIsPaused(Controller const &controller, bool &running)
 {
+    int tempPause = 0;
+    CheckGameIsPaused(tempPause);  // Print message if game is paused
+
     while(snake.pause == true){
       controller.HandleInput(running, snake);
     }
+    CheckGameIsPaused(tempPause, running); // Print message if game is unpaused after been paused
+}
+
+void Game::CheckGameIsPaused(int &tempPause)
+{
+  if(snake.pause)
+  {
+    std::cout << "Game paused." << std::endl;
+    tempPause = 1;
+  }
+}
+
+void Game::CheckGameIsPaused(int &tempPause, bool &running)
+{
+  if(!snake.pause && tempPause)
+  {
+    std::cout << "Game unpaused." << std::endl;
+    tempPause = 0;
+  }
 }
 
 void Game::SaveScore()

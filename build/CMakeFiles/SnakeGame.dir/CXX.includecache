@@ -6,45 +6,17 @@
 
 #IncludeRegexTransform: 
 
+/mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/controller.cpp
+controller.h
 /mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/controller.h
-snake.h
-/mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/snake.h
-
-/mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/game.cpp
-game.h
-/mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/game.h
 iostream
 -
 SDL.h
 /mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/SDL.h
-fstream
--
-string
--
-vector
--
-sstream
--
-algorithm
--
-
-/mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/game.h
-random
--
-SDL.h
-/mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/SDL.h
-controller.h
-/mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/controller.h
-renderer.h
-/mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/renderer.h
 snake.h
 /mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/snake.h
 
-/mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/renderer.h
-vector
--
-SDL.h
-/mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/SDL.h
+/mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/controller.h
 snake.h
 /mnt/c/Ubuntu/CppND-Capstone-Snake-Game/src/snake.h
 

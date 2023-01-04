@@ -16,6 +16,8 @@ class Game {
   int GetSize() const;
 
   void CheckGameIsPaused(Controller const &controller, bool &running);
+  void CheckGameIsPaused(int &tempPause, bool &running);
+  void CheckGameIsPaused(int &tempPause);
   void SaveScore();
 
  private:
