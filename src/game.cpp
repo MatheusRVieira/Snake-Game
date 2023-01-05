@@ -26,9 +26,10 @@ T GetPreviousScores()
         }  
 
         sort(PreviousScoreVec.begin(), PreviousScoreVec.end(), std::greater<int>());
-        PrevRecord = PreviousScoreVec.front();                                // Save previous record to see if the user beat the record. 
+        PrevRecord = PreviousScoreVec.front();                                // Save previous record to see if the player beat the record. 
         stream.close();
     }
+
     return PrevRecord;
 }
 
@@ -51,7 +52,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
   while (running) {
     
-    CheckGameIsPaused(controller, running); // Pause the game if ESC is pressed
+    CheckGameIsPaused(controller, running); // Check if the game was paused
     
     frame_start = SDL_GetTicks();
 
@@ -119,17 +120,19 @@ void Game::Update() {
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
 
+// Logic to pause the game
 void Game::CheckGameIsPaused(Controller const &controller, bool &running)
 {
     int tempPause = 0;
-    CheckGameIsPaused(tempPause);  // Print message if game is paused
+    CheckGameIsPaused(tempPause);
 
     while(snake.pause == true){
       controller.HandleInput(running, snake);
     }
-    CheckGameIsPaused(tempPause, running); // Print message if game is unpaused after been paused
+    CheckGameIsPaused(tempPause, running);
 }
 
+// Print message if game is paused
 void Game::CheckGameIsPaused(int &tempPause)
 {
   if(snake.pause)
@@ -139,6 +142,7 @@ void Game::CheckGameIsPaused(int &tempPause)
   }
 }
 
+// Print message if game is unpaused after has been paused
 void Game::CheckGameIsPaused(int &tempPause, bool &running)
 {
   if(!snake.pause && tempPause)
@@ -148,9 +152,10 @@ void Game::CheckGameIsPaused(int &tempPause, bool &running)
   }
 }
 
+// Save the player's score and check for record beaten
 void Game::SaveScore()
 {
-    // Getting previous record and checking if record was beaten
+    // Getting previous record (if exists) and checking if record was beaten
     if((GetScore() > GetPreviousScores<int>()) && GetPreviousScores<int>() != 0){
       std::cout << std::endl << "Congragulations. You beat the record!" << std::endl;
     }
